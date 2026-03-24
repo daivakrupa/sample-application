@@ -5,27 +5,21 @@ env:
     AWS_DEFAULT_REGION: us-east-1
     S3_BUCKET: myapp-dev-frontend-assets
     CLOUDFRONT_ID: E20ZFJTSX7WOZN
+    REACT_APP_API_URL: http://myapp-dev-backend-alb-338517829.us-east-1.elb.amazonaws.com
 
 phases:
   install:
     commands:
       - echo Moving to frontend folder
       - cd frontend
-
-      - echo Installing dependencies
       - npm install
 
   build:
     commands:
-      - echo Building React app
+      - echo "API URL is $REACT_APP_API_URL"
       - npm run build
-      env:
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
 
   post_build:
     commands:
-      - echo Uploading build to S3
       - aws s3 sync build/ s3://$S3_BUCKET --delete
-
-      - echo Invalidating CloudFront cache
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
