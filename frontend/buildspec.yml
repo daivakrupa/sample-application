@@ -1,14 +1,11 @@
 version: 0.2
 
-<<<<<<< Updated upstream
-=======
 env:
   variables:
     AWS_DEFAULT_REGION: us-east-1
     S3_BUCKET: myapp-dev-frontend-assets
     CLOUDFRONT_ID: E20ZFJTSX7WOZN
 
->>>>>>> Stashed changes
 phases:
   install:
     commands:
@@ -18,20 +15,6 @@ phases:
       - echo Installing dependencies
       - npm install
 
-<<<<<<< Updated upstream
-  pre_build:
-    commands:
-      - echo Detecting branch
-      - echo $CODEBUILD_WEBHOOK_HEAD_REF
-
-      - if [[ "$CODEBUILD_WEBHOOK_HEAD_REF" == *"dev"* ]]; then
-          source ../env/dev.env;
-        else
-          source ../env/qa.env;
-        fi
-
-=======
->>>>>>> Stashed changes
   build:
     commands:
       - echo Building React app
