@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   res.send("Backend running in ECS 🚀");
 });
 
-app.get("/health", (req, res) => {
+app.get("/health/message", (req, res) => {
   res.json({ message: "Hello from ECS Backend (Node.js)!" });
 });
 
