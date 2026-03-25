@@ -5,8 +5,7 @@ env:
     AWS_DEFAULT_REGION: us-east-1
     S3_BUCKET: myapp-dev-frontend-assets
     CLOUDFRONT_ID: E20ZFJTSX7WOZN
-    REACT_APP_API_URL: https://d23de2my0utecx.cloudfront.net/
-
+    REACT_APP_API_URL: http://myapp-dev-backend-alb-338517829.us-east-1.elb.amazonaws.com
 phases:
   install:
     commands:
